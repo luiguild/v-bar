@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/luiguild/v-bar/blob/master/readme-image.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/luiguild/v-bar/master/readme-image.png"></p>
 
 # VBar
 
