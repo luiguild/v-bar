@@ -1,4 +1,5 @@
 <p align="center"><img src="https://github.com/luiguild/v-bar/blob/master/readme-image.png"></p>
+
 # VBar
 
 A virtual scrollbar component for VueJS 2x
