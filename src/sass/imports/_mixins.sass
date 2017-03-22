@@ -1,0 +1,70 @@
+$pixel-proportion: 8px
+
+=border-box
+    box-sizing: border-box
+
+=flex($typeFlex, $wrapFlex, $justifyFlex, $alignFlex)
+    display: flex !important
+    flex-direction: $typeFlex !important
+
+    @if $wrapFlex == wrap
+        flex-wrap: wrap !important
+    @else if $wrapFlex == w
+        flex-wrap: wrap !important
+    @else if $wrapFlex == nowrap
+        flex-wrap: nowrap !important
+    @else if $wrapFlex == n
+        flex-wrap: nowrap !important
+    @else if $wrapFlex == ''
+        flex-wrap: nowrap !important
+
+    justify-content: $justifyFlex !important
+    align-content: $alignFlex !important
+    align-items: $alignFlex !important
+
+.is-wrap
+    flex-wrap: wrap !important
+
+.is-nowrap
+    flex-wrap: nowrap !important
+
+=transition($timeTransition)
+    transition-timing-function: ease-in-out
+    transition-duration: $timeTransition
+    transition-property: all
+
+=transition-delay($timeTransition)
+    transition-delay: $timeTransition
+
+=upper-case
+    text-transform: uppercase
+
+=lower-case
+    text-transform: lowercase
+
+=dont-select
+    user-select: none
+
+=cursor-pointer
+    cursor: pointer
+
+=cursor-default
+    cursor: default
+
+=display-block
+    display: block
+
+=display-none
+    display: none
+
+=animation($nameAnimation, $durationAnimation, $delayAnimation, $repeatAnimation, $directionAnimation, $stateAnimation)
+    animation-name: $nameAnimation
+    animation-duration: $durationAnimation
+    animation-play-state: $stateAnimation
+    animation-delay: $delayAnimation
+    animation-iteration-count: $repeatAnimation
+    animation-direction: $directionAnimation
+
+=transparent
+    border-color: transparent !important
+    background-color: transparent !important
