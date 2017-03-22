@@ -45,6 +45,7 @@
                     float: left
                     background-color: #f0f
                     margin: $pixel-proportion
+                    color: $transparent
 
                 > .clearfix
                     clear: both
@@ -54,55 +55,10 @@
     .component
         h1 VBar
         v-bar(wrapperClass="wrapper", verticalBarClass="verticalBarClass", verticalBarInternalClass="verticalBarInternalClass", horizontalBarClass="horizontalBarClass", horizontalBarInternalClass="horizontalBarInternalClass")
+            - var n = 0
             .container
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
-                .item
+                while n < 200
+                    .item= n++
                 .clearfix
 </template>
 

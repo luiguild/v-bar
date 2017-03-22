@@ -66,17 +66,21 @@ yarn add v-bar
 #### Options
 VBar is fully customizable. You can use your CSS classes to make it even more beautiful :)
 ``` bash
-    { String } *required* wrapperClass=""
-    { String } *optional* verticalBarClass=""
-    { String } *optional* verticalBarInternalClass=""
-    { String } *optional* horizontalBarClass=""
-    { String } *optional* horizontalBarInternalClass=""
+{ String } *required* wrapperClass=""
+{ String } *optional* verticalBarClass=""
+{ String } *optional* verticalBarInternalClass=""
+{ String } *optional* horizontalBarClass=""
+{ String } *optional* horizontalBarInternalClass=""
 ```
 
 ## Build Setup
 ``` bash
-# install dependencies
+# install dependencies 
+# using NPM
 npm install
+
+# using yarn
+yarn
 
 # serve with hot reload at localhost:8080
 npm run dev
