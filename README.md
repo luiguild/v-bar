@@ -92,11 +92,12 @@ npm run build
 npm run build --report
 ```
 
-## To contribute
-Contributions are always welcome!
-<br>Clone the repo
+## To contribute and make it better
+Clone/fork the repo
 <br>Change what you want
 <br>Send PR
+
+###### Contributions are always welcome!
 
 ## Special thanks!
 Carlo Fragni https://github.com/carlofragni
