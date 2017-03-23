@@ -75,7 +75,7 @@ VBar is fully customizable. You can use your CSS classes to make it even more be
 
 ## Build Setup
 ``` bash
-# install dependencies 
+# install dependencies
 # using NPM
 npm install
 
@@ -97,3 +97,6 @@ Contributions are always welcome!
 <br>Clone the repo
 <br>Change what you want
 <br>Send PR
+
+## Special thanks!
+Carlo Fragni https://github.com/carlofragni
