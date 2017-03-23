@@ -15,12 +15,12 @@
         +flex(column, n, flex-start, center)
 
         > .wrapper
-            min-height: 300px
-            max-height: 300px
-            height: 300px
-            min-width: 300px
-            max-width: 300px
-            width: 300px
+            min-height: 250px
+            max-height: 250px
+            height: 250px
+            min-width: 250px
+            max-width: 250px
+            width: 250px
 
             .verticalBarClass
                 background-color: #0ff
@@ -36,8 +36,8 @@
 
             .container
                 position: relative
-                width: 500px
-                height: 500px
+                width: 2000px
+                height: 2000px
 
                 > .item
                     height: 50px
@@ -57,7 +57,7 @@
         v-bar(wrapperClass="wrapper", verticalBarClass="verticalBarClass", verticalBarInternalClass="verticalBarInternalClass", horizontalBarClass="horizontalBarClass", horizontalBarInternalClass="horizontalBarInternalClass")
             - var n = 0
             .container
-                while n < 200
+                while n < 500
                     .item= n++
                 .clearfix
 </template>
