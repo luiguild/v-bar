@@ -238,7 +238,7 @@ export default {
                 sizeBar = this.bars.vertical.size + 4
                 sizeContainer = this.container.scrollHeight
             }
-            internalSize = ((positionWrapper / (sizeWrapper - (sizeContainer))) * (sizeContainer - sizeBar))
+            internalSize = (positionWrapper / (sizeWrapper - (sizeContainer))) * (sizeContainer - sizeBar)
 
             return internalSize
         },
@@ -330,12 +330,12 @@ export default {
 
             this.bars.horizontal.size = this.wrapper.scrollWidth - this.container.scrollWidth !== 24 &&
                 this.wrapper.scrollWidth - this.container.scrollWidth !== 0
-                ? ((this.container.scrollWidth / this.wrapper.scrollWidth) * this.container.scrollWidth)
+                ? (this.container.scrollWidth / this.wrapper.scrollWidth) * this.container.scrollWidth
                 : 0
 
             this.bars.vertical.size = this.wrapper.scrollHeight - this.container.scrollHeight !== 24 &&
                 this.wrapper.scrollHeight - this.container.scrollHeight !== 0
-                ? ((this.container.scrollHeight / this.wrapper.scrollHeight) * this.container.scrollHeight)
+                ? (this.container.scrollHeight / this.wrapper.scrollHeight) * this.container.scrollHeight
                 : 0
         }
     },
