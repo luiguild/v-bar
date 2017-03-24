@@ -49,6 +49,7 @@
             width: $pixel-proportion
             margin-right: $pixel-proportion / 2
             margin-top: $pixel-proportion / 2
+            margin-bottom: $pixel-proportion / 2
 
             &-internal
                 height: 0px
@@ -74,7 +75,7 @@
         .bar--container(ref="container",
             @wheel="scroll")
 
-            .bar--vertical(v-show="bars.vertical",
+            .bar--vertical(v-show="bars.vertical.size",
                 :style="barSizeVertical",
                 :class="propBarVertical",
                 @touchstart="startDragY",
@@ -84,7 +85,7 @@
                     :style="barInternalVertical",
                     :class="propBarInternalVertical")
 
-            .bar--horizontal(v-show="bars.horizontal",
+            .bar--horizontal(v-show="bars.horizontal.size",
                 :style="barSizeHorizontal",
                 :class="propBarHorizontal",
                 @touchstart="startDragX",
@@ -114,8 +115,14 @@ export default {
             axis: ''
         },
         bars: {
-            horizontal: 0,
-            vertical: 0
+            horizontal: {
+                elm: '',
+                size: 0
+            },
+            vertical: {
+                elm: '',
+                size: 0
+            }
         },
         wrapper: {
             elm: '',
@@ -168,14 +175,14 @@ export default {
             return this.horizontalBarInternalClass ? this.horizontalBarInternalClass : ''
         },
         barSizeVertical () {
-            if (this.bars.horizontal && this.bars.vertical) {
+            if (this.bars.horizontal.size && this.bars.vertical.size) {
                 return {
                     height: 'calc(100% - 16px)'
                 }
             }
         },
         barSizeHorizontal () {
-            if (this.bars.horizontal && this.bars.vertical) {
+            if (this.bars.horizontal.size && this.bars.vertical.size) {
                 return {
                     width: 'calc(100% - 16px)'
                 }
@@ -185,7 +192,7 @@ export default {
             let barTop = this.getBarInternalSize('Y')
 
             return {
-                height: this.bars.vertical + 'px',
+                height: this.bars.vertical.size + 'px',
                 top: barTop + 'px'
             }
         },
@@ -193,15 +200,15 @@ export default {
             let barLeft = this.getBarInternalSize('X')
 
             return {
-                width: this.bars.horizontal + 'px',
+                width: this.bars.horizontal.size + 'px',
                 left: barLeft + 'px'
             }
         },
         validationScrolls () {
-            if (!this.bars.horizontal) {
+            if (!this.bars.horizontal.size) {
                 return 'overflowX: hidden'
             }
-            if (!this.bars.vertical) {
+            if (!this.bars.vertical.size) {
                 return 'overflowY: hidden'
             }
         }
@@ -222,16 +229,16 @@ export default {
 
             if (axis === 'X') {
                 positionWrapper = this.wrapper.scrollLeft
-                sizeWrapper = this.wrapper.scrollWidth
-                sizeBar = this.bars.horizontal
+                sizeWrapper = this.wrapper.scrollWidth + 24
+                sizeBar = this.bars.horizontal.size + 4
                 sizeContainer = this.container.scrollWidth
             } else if (axis === 'Y') {
                 positionWrapper = this.wrapper.scrollTop
-                sizeWrapper = this.wrapper.scrollHeight
-                sizeBar = this.bars.vertical
+                sizeWrapper = this.wrapper.scrollHeight + 24
+                sizeBar = this.bars.vertical.size + 4
                 sizeContainer = this.container.scrollHeight
             }
-            internalSize = ((positionWrapper / (sizeWrapper - (sizeContainer - 24))) * (sizeContainer - sizeBar))
+            internalSize = ((positionWrapper / (sizeWrapper - (sizeContainer))) * (sizeContainer - sizeBar))
 
             return internalSize
         },
@@ -244,19 +251,19 @@ export default {
                 clientDirection
 
             if (axis === 'X') {
-                sizeWrapper = this.wrapper.scrollWidth
-                sizeBar = this.bars.horizontal
+                sizeWrapper = this.wrapper.scrollWidth + 24
+                sizeBar = this.bars.horizontal.size + 4
                 sizeContainer = this.container.scrollWidth
                 offsetContainer = this.container.elm.offsetLeft
-                clientDirection = e.clientX
+                clientDirection = e.clientX - sizeBar / 2
             } else if (axis === 'Y') {
-                sizeWrapper = this.wrapper.scrollHeight
-                sizeBar = this.bars.vertical
+                sizeWrapper = this.wrapper.scrollHeight + 24
+                sizeBar = this.bars.vertical.size + 4
                 sizeContainer = this.container.scrollHeight
                 offsetContainer = this.container.elm.offsetTop
-                clientDirection = e.clientY
+                clientDirection = e.clientY - sizeBar / 2
             }
-            coordinate = ((sizeWrapper - sizeContainer - 24) * (clientDirection - offsetContainer - 4)) / (sizeContainer - sizeBar)
+            coordinate = ((sizeWrapper - sizeContainer) * (clientDirection - offsetContainer)) / (sizeContainer - sizeBar)
 
             return coordinate
         },
@@ -309,26 +316,26 @@ export default {
         getSizes () {
             this.wrapper = {
                 elm: this.$refs.wrapper,
-                scrollHeight: this.$refs.wrapper.scrollHeight - 24,
-                scrollWidth: this.$refs.wrapper.scrollWidth - 24,
+                scrollHeight: this.$refs.wrapper.scrollHeight + 24,
+                scrollWidth: this.$refs.wrapper.scrollWidth + 24,
                 scrollLeft: this.$refs.wrapper.scrollLeft,
                 scrollTop: this.$refs.wrapper.scrollTop
             }
 
             this.container = {
                 elm: this.$refs.container,
-                scrollHeight: this.$refs.container.scrollHeight - 24,
-                scrollWidth: this.$refs.container.scrollWidth - 24
+                scrollHeight: this.$refs.container.scrollHeight,
+                scrollWidth: this.$refs.container.scrollWidth
             }
 
-            this.bars.horizontal = this.wrapper.scrollWidth - this.container.scrollWidth !== 24 &&
+            this.bars.horizontal.size = this.wrapper.scrollWidth - this.container.scrollWidth !== 24 &&
                 this.wrapper.scrollWidth - this.container.scrollWidth !== 0
-                ? ((this.container.scrollWidth / this.wrapper.scrollWidth) * this.container.scrollWidth) - 8
+                ? ((this.container.scrollWidth / this.wrapper.scrollWidth) * this.container.scrollWidth)
                 : 0
 
-            this.bars.vertical = this.wrapper.scrollHeight - this.container.scrollHeight !== 24 &&
+            this.bars.vertical.size = this.wrapper.scrollHeight - this.container.scrollHeight !== 24 &&
                 this.wrapper.scrollHeight - this.container.scrollHeight !== 0
-                ? ((this.container.scrollHeight / this.wrapper.scrollHeight) * this.container.scrollHeight) - 8
+                ? ((this.container.scrollHeight / this.wrapper.scrollHeight) * this.container.scrollHeight)
                 : 0
         }
     },
