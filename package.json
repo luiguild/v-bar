@@ -1,6 +1,6 @@
 {
     "name": "v-bar",
-    "version": "1.0.6",
+    "version": "1.0.8",
     "description": "A virtual scrollbar component for VueJS 2x",
     "author": "Luigui Delyer",
     "main": "src/components/v-bar.vue",
