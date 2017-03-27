@@ -15,7 +15,7 @@ yarn add v-bar
 ```
 
 #### In your `.vue` component
-``` bash
+``` vue
 <style>
     # Create one class to your wrapper
     # Using SASS
@@ -65,7 +65,7 @@ yarn add v-bar
 
 #### Options
 VBar is fully customizable. You can use your CSS classes to make it even more beautiful :)
-``` bash
+``` javascript
 { String } *required* wrapperClass=""
 { String } *optional* verticalBarClass=""
 { String } *optional* verticalBarInternalClass=""
