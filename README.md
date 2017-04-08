@@ -45,7 +45,7 @@ yarn add v-bar
         vBarInternal="",
         hBar="",
         hBarInternal="")
-        ...
+        //- your content
 </template>
 ```
 
@@ -57,7 +57,7 @@ yarn add v-bar
         vBarInternal=""
         hBar=""
         hBarInternal="">
-        ...
+        <!-- your content -->
     </v-bar>
 </template>
 ```
