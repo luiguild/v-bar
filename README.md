@@ -4,7 +4,7 @@
 
 The virtual responsive crossbrowser scrollbar component for VueJS 2x
 
-<a href="http://vbar.github.io">DEMO</a>
+<a href="https://luiguild.github.io/v-bar/">DEMO</a>
 
 ## Usage
 #### Install
