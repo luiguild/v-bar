@@ -225,6 +225,17 @@
                                 |    &lt;/v-bar&gt;
                                 | &lt;/template&gt;
 
+                        h4 Import the component
+                        code
+                            pre
+                                | &lt;script&gt;
+                                |   import VBar from 'v-bar'
+
+                                |   export default {
+                                |       components: { VBar }
+                                |   }
+                                | &lt;/script&gt;
+
                         h3 Options
                         h4 VBar is fully customizable. You can use your CSS classes to make it even more beautiful :)
                         code

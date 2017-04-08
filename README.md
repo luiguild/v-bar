@@ -2,58 +2,70 @@
 
 # VBar
 
-A virtual scrollbar component for VueJS 2x
+The virtual responsive crossbrowser scrollbar component for VueJS 2x
+
+<a href="vbar.github.io">DEMO</a>
 
 ## Usage
 #### Install
+###### Using NPM
 ``` bash
-# Using NPM
 npm i v-bar
-
-# Using yarn
+```
+###### Using yarn
+``` bash
 yarn add v-bar
 ```
 
-#### In your `.vue` component
+#### In your `.vue` component create a class to your wrapper
+###### Using SASS
 ``` vue
-<style>
-    # Create one class to your wrapper
-    # Using SASS
+<style lang="sass">
     .wrapper
         height: 300px
         width: 300px
-
-    # Using pure CSS
+</style>
+```
+###### Simple CSS
+``` vue
+<style>
     .wrapper {
         height: 300px;
         width: 300px;
     }
 </style>
+```
 
-<template>
-    # Include the component in your template
-    # Using PUG lang
-    v-bar(wrapperClass="",
-        verticalBarClass="",
-        verticalBarInternalClass="",
-        horizontalBarClass="",
-        horizontalBarInternalClass="")
-        # Your content
+#### Include the component in your template
+###### Using Pug
+``` vue
+<template lang="pug">
+    v-bar(wrapper="wrapper",
+        vBar="",
+        vBarInternal="",
+        hBar="",
+        hBarInternal="")
         ...
+</template>
+```
 
-    # Using HTML
-    <v-bar wrapperClass=""
-        verticalBarClass=""
-        verticalBarInternalClass=""
-        horizontalBarClass=""
-        horizontalBarInternalClass="">
+###### Using Simple HTML
+``` vue
+<template>
+    <v-bar wrapper="wrapper"
+        vBar=""
+        vBarInternal=""
+        hBar=""
+        hBarInternal="">
         # Your content
         ...
     </v-bar>
 </template>
+```
 
+#### Import component
+``` vue
 <script>
-    # Import component
     import VBar from 'v-bar'
 
     # Declare
@@ -66,12 +78,17 @@ yarn add v-bar
 #### Options
 VBar is fully customizable. You can use your CSS classes to make it even more beautiful :)
 ``` javascript
-{ String } *required* wrapperClass=""
-{ String } *optional* verticalBarClass=""
-{ String } *optional* verticalBarInternalClass=""
-{ String } *optional* horizontalBarClass=""
-{ String } *optional* horizontalBarInternalClass=""
+*required* wrapper=""
+*optional* vBar=""
+*optional* vBarInternal=""
+*optional* hBar=""
+*optional* hBarInternal=""
 ```
+
+## To contribute and make it better
+Clone the repo, change what you want and send PR
+
+###### Contributions are always welcome!
 
 ## Build Setup
 ``` bash
@@ -92,12 +109,10 @@ npm run build
 npm run build --report
 ```
 
-## To contribute and make it better
-Clone/fork the repo
-<br>Change what you want
-<br>Send PR
-
-###### Contributions are always welcome!
-
-## Special thanks!
-Carlo Fragni https://github.com/carlofragni
+## Contributors
+#### Luigui Delyer
+https://github.com/luiguild
+#### Carlo Fragni
+https://github.com/carlofragni
+#### SoullessWaffle
+https://github.com/SoullessWaffle
