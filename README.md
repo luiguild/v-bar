@@ -111,7 +111,15 @@ npm run build --report
 ## Contributors
 #### Luigui Delyer
 https://github.com/luiguild
+
 #### Carlo Fragni
 https://github.com/carlofragni
+
 #### SoullessWaffle
 https://github.com/SoullessWaffle
+
+#### Robbe Clerckx
+https://github.com/robbeman
+
+#### antshil
+https://github.com/antshil

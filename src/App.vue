@@ -281,6 +281,12 @@
 
                         h3 SoullessWaffle
                         h5 https://github.com/SoullessWaffle
+
+                        h3 Robbe Clerckx
+                        h5 https://github.com/robbeman
+
+                        h3 antshil
+                        h5 https://github.com/antshil
         .icons-group
             a.icons(href="https://github.com/luiguild/v-bar", target="_blank")
                 i.fa.fa-github-alt
