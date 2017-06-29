@@ -4,7 +4,6 @@
     $vue-logo-height: 110vh
     $vue-logo-width: 70vh
 
-
     body,
     html
         font-family: 'Avenir', Helvetica, Arial, sans-serif
@@ -84,9 +83,9 @@
         > .wrapper
             border-radius: $pixel-proportion / 2
             background-color: $color5
-            min-height: 480px
-            max-height: 480px
-            height: 480px
+            min-height: 430px
+            max-height: 430px
+            height: 430px
             min-width: 320px
             max-width: 320px
             width: 320px

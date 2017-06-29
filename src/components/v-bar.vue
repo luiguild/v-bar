@@ -75,27 +75,40 @@
 <template lang="pug">
     #vbar(:class="propWrapperSize")
         .bar--container(ref="container",
-            @wheel="scroll")
+            @wheel="scroll",
+            @touchmove="scroll")
 
-            .bar--vertical(v-show="bars.vertical.size",
+            .bar--vertical(ref="verticalBar", v-show="bars.vertical.size",
                 :style="barSizeVertical",
                 :class="propBarVertical",
-                @touchstart="startDragY",
-                @mousedown="startDragY")
+                @touchstart="startDrag",
+                @mousedown="startDrag",
+                data-axis="Y",
+                data-drag-source="bar")
 
-                .bar--vertical-internal(ref="verticalBar",
+                .bar--vertical-internal(ref="verticalInternalBar",
                     :style="barInternalVertical",
-                    :class="propBarInternalVertical")
+                    :class="propBarInternalVertical",
+                    @touchstart="startDrag",
+                    @mousedown="startDrag",
+                    data-axis="Y",
+                    data-drag-source="internal")
 
             .bar--horizontal(v-show="bars.horizontal.size",
                 :style="barSizeHorizontal",
                 :class="propBarHorizontal",
-                @touchstart="startDragX",
-                @mousedown="startDragX")
+                @touchstart="startDrag",
+                @mousedown="startDrag",
+                data-axis="X",
+                data-drag-source="bar")
 
                 .bar--horizontal-internal(ref="horizontalBar",
                     :style="barInternalHorizontal",
-                    :class="propBarInternalHorizontal")
+                    :class="propBarInternalHorizontal",
+                    @touchstart="startDrag",
+                    @mousedown="startDrag",
+                    data-axis="X",
+                    data-drag-source="internal")
 
             .bar--wrapper(ref="wrapperRef",
                 :style="validationScrolls")
@@ -114,15 +127,18 @@ export default {
     data: () => ({
         dragging: {
             enable: false,
-            axis: ''
+            axis: '',
+            offset: ''
         },
         bars: {
             horizontal: {
                 elm: '',
+                parent: '',
                 size: 0
             },
             vertical: {
                 elm: '',
+                parent: '',
                 size: 0
             }
         },
@@ -139,10 +155,6 @@ export default {
             scrollWidth: ''
         }
     }),
-    destroyed () {
-        removeResizeListener(this.$refs.container, this.resize)
-        removeResizeListener(this.$refs.wrapperRef.children[0], this.resize)
-    },
     mounted () {
         addResizeListener(this.$refs.container, this.resize)
         addResizeListener(this.$refs.wrapperRef.children[0], this.resize)
@@ -155,6 +167,9 @@ export default {
         this.getSizes()
     },
     beforeDestroy () {
+        removeResizeListener(this.$refs.container, this.resize)
+        removeResizeListener(this.$refs.wrapperRef.children[0], this.resize)
+
         document.removeEventListener('mousemove', this.onDrag)
         document.removeEventListener('touchmove', this.onDrag)
         document.removeEventListener('mouseup', this.stopDrag)
@@ -191,7 +206,7 @@ export default {
             }
         },
         barInternalVertical () {
-            let barTop = this.getBarInternalSize('Y')
+            let barTop = this.getBarInternal('Y')
 
             return {
                 height: this.bars.vertical.size + 'px',
@@ -199,7 +214,7 @@ export default {
             }
         },
         barInternalHorizontal () {
-            let barLeft = this.getBarInternalSize('X')
+            let barLeft = this.getBarInternal('X')
 
             return {
                 width: this.bars.horizontal.size + 'px',
@@ -216,13 +231,35 @@ export default {
         }
     },
     methods: {
-        scroll () {
-            this.getSizes()
+        scroll (e) {
+            // console.log(e)
+            // e.preventDefault()
+
+            // console.log(e.touches[0].clientX,
+            //     e.touches[0].pageX,
+            //     e.touches[0].screenX)
+
+            // console.log(e.layerY)
+
+            const Y = 0,
+                X = 0
+            // let Y = e.layerX
+            //     ? e.layerX
+            //     : e.changedTouches
+            //     ? e.changedTouches[0].clientX * -1
+            //     : '',
+            //     X = e.layerY
+            //     ? e.layerY
+            //     : e.changedTouches
+            //     ? e.changedTouches[0].clientY * -1
+            //     : ''
+
+            this.getSizes(X, Y)
         },
         resize () {
             this.getSizes()
         },
-        getBarInternalSize (axis) {
+        getBarInternal (axis) {
             let internalSize,
                 positionWrapper,
                 sizeWrapper,
@@ -264,38 +301,50 @@ export default {
                 sizeBar = this.bars.horizontal.size
                 sizeContainer = this.container.scrollWidth
                 offsetContainer = this.container.elm.offsetLeft
-                clientDirection = e.clientX
+                clientDirection = e.clientX - this.dragging.offset
             } else if (axis === 'Y') {
                 sizeWrapper = this.wrapperObj.scrollHeight
                 sizeBar = this.bars.vertical.size
                 sizeContainer = this.container.scrollHeight
-                offsetContainer = this.container.elm.offsetTop
-                clientDirection = e.clientY
+                offsetContainer = this.container.elm.offsetTop - (this.bars.vertical.size * 1.4)
+                clientDirection = e.clientY - this.dragging.offset
             }
             coordinate = ((sizeWrapper - sizeContainer) * (clientDirection - offsetContainer)) / (sizeContainer - sizeBar)
 
             return coordinate
         },
-        startDragY (e) {
+        startDrag (e) {
             e.preventDefault()
             e.stopPropagation()
 
             e = e.changedTouches ? e.changedTouches[0] : e
 
-            this.dragging = {
-                enable: true,
-                axis: 'Y'
+            const axis = e.target.getAttribute('data-axis'),
+                dataDrag = e.target.getAttribute('data-drag-source')
+
+            let offset,
+                elementOffset
+
+            if (axis === 'Y') {
+                if (dataDrag === 'bar') {
+                    elementOffset = e.explicitOriginalTarget.offsetTop + (this.bars.vertical.size * 1.4)
+                } else if (dataDrag === 'internal') {
+                    elementOffset = e.clientY - this.bars.vertical.elm.offsetTop
+                }
+            } else if (axis === 'Y') {
+                if (dataDrag === 'bar') {
+                    elementOffset = e.explicitOriginalTarget.offsetTop + (this.bars.horizontal.size * 1.4)
+                } else if (dataDrag === 'internal') {
+                    elementOffset = e.clientX - this.bars.horizontal.elm.offsetTop
+                }
             }
-        },
-        startDragX (e) {
-            e.preventDefault()
-            e.stopPropagation()
 
-            e = e.changedTouches ? e.changedTouches[0] : e
+            offset = elementOffset
 
             this.dragging = {
                 enable: true,
-                axis: 'X'
+                axis: axis,
+                offset: offset
             }
         },
         onDrag (e) {
@@ -305,10 +354,12 @@ export default {
 
                 e = e.changedTouches ? e.changedTouches[0] : e
 
+                const wrapper = this.$refs.wrapperRef
+
                 if (this.dragging.axis === 'X') {
-                    this.$refs.wrapperRef.scrollLeft = this.getCoordinates(e, 'X')
+                    wrapper.scrollLeft = this.getCoordinates(e, 'X')
                 } else if (this.dragging.axis === 'Y') {
-                    this.$refs.wrapperRef.scrollTop = this.getCoordinates(e, 'Y')
+                    wrapper.scrollTop = this.getCoordinates(e, 'Y')
                 }
 
                 this.getSizes()
@@ -322,25 +373,38 @@ export default {
                 }
             }
         },
-        getSizes () {
+        getSizes (X, Y) {
+            const wrapperRef = this.$refs.wrapperRef,
+                containerRef = this.$refs.container,
+                verticalBarRef = this.$refs.verticalBar,
+                verticalInternalBarRef = this.$refs.verticalInternalBar,
+                horizontalBarRef = this.$refs.horizontalBar,
+                horizontalInternalBarRef = this.$refs.horizontalInternalBar
+
             this.wrapperObj = {
-                elm: this.$refs.wrapperRef,
-                scrollHeight: this.$refs.wrapperRef.scrollHeight,
-                scrollWidth: this.$refs.wrapperRef.scrollWidth,
-                scrollLeft: this.$refs.wrapperRef.scrollLeft,
-                scrollTop: this.$refs.wrapperRef.scrollTop
+                elm: wrapperRef,
+                scrollHeight: wrapperRef.scrollHeight,
+                scrollWidth: wrapperRef.scrollWidth,
+                scrollLeft: wrapperRef.scrollLeft,
+                scrollTop: wrapperRef.scrollTop
             }
 
             this.container = {
-                elm: this.$refs.container,
-                scrollHeight: this.$refs.container.scrollHeight,
-                scrollWidth: this.$refs.container.scrollWidth
+                elm: containerRef,
+                scrollHeight: containerRef.scrollHeight,
+                scrollWidth: containerRef.scrollWidth
             }
+
+            this.bars.horizontal.elm = horizontalInternalBarRef
+            this.bars.horizontal.parent = horizontalBarRef
 
             this.bars.horizontal.size = this.wrapperObj.scrollWidth - this.container.scrollWidth > 24 &&
                 this.wrapperObj.scrollWidth - this.container.scrollWidth !== 0
                 ? (this.container.scrollWidth / this.wrapperObj.scrollWidth) * this.container.scrollWidth
                 : 0
+
+            this.bars.vertical.elm = verticalInternalBarRef
+            this.bars.vertical.parent = verticalBarRef
 
             this.bars.vertical.size = this.wrapperObj.scrollHeight - this.container.scrollHeight > 24 &&
                 this.wrapperObj.scrollHeight - this.container.scrollHeight !== 0
