@@ -155,6 +155,9 @@ export default {
             scrollWidth: ''
         }
     }),
+    created () {
+        this.$on('vbar:y-scroll-to', this.yScrollTo)
+    },
     mounted () {
         addResizeListener(this.$refs.container, this.resize)
         addResizeListener(this.$refs.wrapperRef.children[0], this.resize)
@@ -410,6 +413,24 @@ export default {
                 this.wrapperObj.scrollHeight - this.container.scrollHeight !== 0
                 ? (this.container.scrollHeight / this.wrapperObj.scrollHeight) * this.container.scrollHeight
                 : 0
+        },
+        yScrollTo (position) {
+            let isTarget = ['bottom', 'top'].includes(position),
+                isNumber = (typeof position === 'number' && (position % 1) === 0)
+
+            if (!isTarget && !isNumber) return console.warn('Invalid X position')
+
+            if (position === 'bottom') {
+                let totalHeight = this.$refs.wrapperRef.children[0].scrollHeight
+
+                this.$refs.wrapperRef.scrollTop = totalHeight
+            } else if (position === 'top') {
+                this.$refs.wrapperRef.scrollTop = 0
+            } else {
+                this.$refs.wrapperRef.scrollTop = position
+            }
+
+            this.resize()
         }
     },
     props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal']
