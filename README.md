@@ -84,13 +84,13 @@ VBar is fully customizable. You can use your CSS classes to make it even more be
 *optional* hBarInternal=""
 ```
 
-#### Scroll position manipulation
+## Scroll position manipulation
 VBar lets you manipulate the scroll position however you want. For that, all you need to do is define a unique `ref` property:
 ``` html
 <v-bar wrapper="wrapper" ref="vBar"></v-bar>
 ```
 
-###### vbar:y-scroll-to
+#### vbar:y-scroll-to
 This allows you to set the vertical scroll position
 ``` javascript
 this.$refs.vBar.$emit('vbar:y-scroll-to', 'bottom') // Scrolls all the way to the bottom
