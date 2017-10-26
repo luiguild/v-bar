@@ -410,6 +410,8 @@ export default {
                 this.wrapperObj.scrollHeight - this.container.scrollHeight !== 0
                 ? (this.container.scrollHeight / this.wrapperObj.scrollHeight) * this.container.scrollHeight
                 : 0
+
+            this.$emit('onScroll', wrapperRef.scrollTop, wrapperRef.scrollLeft, wrapperRef)
         }
     },
     props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal']

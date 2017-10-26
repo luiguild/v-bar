@@ -154,15 +154,32 @@
                             background-color: darken($color5, 3%)
                             color: $color2
                             +border-box
+    .scroll-log
+        position: absolute
+        top: 0
+        z-index: 10
+        border-radius: 4px
+        background-color: #dce1de
+        height: auto
+        min-width: 320px
+        max-width: 320px
+        width: 320px
+        box-shadow: 0 0 8px #1f2421
+        padding: 10px 20px
+        -webkit-box-sizing: border-box
+        -moz-box-sizing: border-box
+        box-sizing: border-box
 </style>
 
 <template lang="pug">
     .component
+        .scroll-log scrollTop: {{ scrollData.scrollTop }}, scrollLeft: {{ scrollData.scrollLeft }}
         v-bar(wrapper="wrapper",
         vBar="verticalBarClass",
         vBarInternal="verticalBarInternalClass",
         hBar="horizontalBarClass",
-        hBarInternal="horizontalBarInternalClass")
+        hBarInternal="horizontalBarInternalClass",
+        @onScroll="userScrollEvent")
             .container
                 .internal
                     h3.is-marginless Welcome to
@@ -244,6 +261,7 @@
                                 | <b>optional</b> vBarInternal=""
                                 | <b>optional</b> hBar=""
                                 | <b>optional</b> hBarInternal=""
+                                | <b>optional</b> onScroll=""
 
                         h3 To contribute <br> and make it better
                         h4 Clone the repo,
@@ -298,7 +316,14 @@
 <script>
 import VBar from './components/v-bar.vue'
 export default {
-    data: () => ({}),
-    components: { VBar }
+    data: () => ({
+        scrollData: {}
+    }),
+    components: { VBar },
+    methods: {
+        userScrollEvent (scrollTop, scrollLeft, wrapper) {
+            this.scrollData = { scrollTop, scrollLeft, wrapper }
+        }
+    }
 }
 </script>
