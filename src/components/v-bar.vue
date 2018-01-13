@@ -51,6 +51,7 @@
             margin-right: $pixel-proportion / 2
             margin-top: $pixel-proportion / 2
             margin-bottom: $pixel-proportion / 2
+            transition: opacity .5s
 
             &-internal
                 height: 0px
@@ -122,6 +123,7 @@
 // **************************************************************************************** //
 
 import { addResizeListener, removeResizeListener } from 'detect-resize'
+import debounce from '../util/util.js'
 
 export default {
     data: () => ({
@@ -163,6 +165,11 @@ export default {
         document.addEventListener('touchmove', this.onDrag)
         document.addEventListener('mouseup', this.stopDrag)
         document.addEventListener('touchend', this.stopDrag)
+
+        if(this.autoHide){
+            this.debounceHide = debounce(this.hide,this.autoHide)
+            this.debounceHide()
+        }
 
         this.getSizes()
     },
@@ -253,6 +260,11 @@ export default {
             //     : e.changedTouches
             //     ? e.changedTouches[0].clientY * -1
             //     : ''
+
+            if(this.autoHide){
+                this.dis()
+                this.debounceHide()
+            }
 
             this.getSizes(X, Y)
         },
@@ -365,6 +377,12 @@ export default {
                 this.getSizes()
             }
         },
+        hide(){
+            this.$refs.verticalBar.style.opacity = '0'
+        },
+        dis(){
+            this.$refs.verticalBar.style.opacity = '1'
+        },
         stopDrag (e) {
             if (this.dragging.enable) {
                 this.dragging = {
@@ -412,6 +430,6 @@ export default {
                 : 0
         }
     },
-    props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal']
+    props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal', 'autoHide']
 }
 </script>
