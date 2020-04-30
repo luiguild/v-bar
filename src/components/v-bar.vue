@@ -72,47 +72,62 @@
 
 </style>
 
-<template lang="pug">
-    #vbar(:class="propWrapperSize")
-        .bar--container(ref="container",
-            @wheel="scroll",
-            @touchmove="scroll")
-
-            .bar--vertical(ref="verticalBar", v-show="bars.vertical.size",
-                :style="barSizeVertical",
-                :class="propBarVertical",
-                @touchstart="startDrag",
-                @mousedown="startDrag",
-                data-axis="Y",
-                data-drag-source="bar")
-
-                .bar--vertical-internal(ref="verticalInternalBar",
-                    :style="barInternalVertical",
-                    :class="propBarInternalVertical",
-                    @touchstart="startDrag",
-                    @mousedown="startDrag",
-                    data-axis="Y",
-                    data-drag-source="internal")
-
-            .bar--horizontal(v-show="bars.horizontal.size",
-                :style="barSizeHorizontal",
-                :class="propBarHorizontal",
-                @touchstart="startDrag",
-                @mousedown="startDrag",
-                data-axis="X",
-                data-drag-source="bar")
-
-                .bar--horizontal-internal(ref="horizontalBar",
-                    :style="barInternalHorizontal",
-                    :class="propBarInternalHorizontal",
-                    @touchstart="startDrag",
-                    @mousedown="startDrag",
-                    data-axis="X",
-                    data-drag-source="internal")
-
-            .bar--wrapper(ref="wrapperRef",
-                :style="validationScrolls")
-                slot
+<template>
+    <div id="vbar" :class="propWrapperSize">
+      <div
+        class="bar--container"
+        ref="container"
+        @wheel="scroll"
+        @touchmove="scroll"
+      >
+        <div
+          class="bar--vertical"
+          ref="verticalBar"
+          v-show="bars.vertical.size"
+          :style="barSizeVertical"
+          :class="propBarVertical"
+          @touchstart="startDrag"
+          @mousedown="startDrag"
+          data-axis="Y"
+          data-drag-source="bar"
+        >
+          <div
+            class="bar--vertical-internal"
+            ref="verticalInternalBar"
+            :style="barInternalVertical"
+            :class="propBarInternalVertical"
+            @touchstart="startDrag"
+            @mousedown="startDrag"
+            data-axis="Y"
+            data-drag-source="internal"
+          ></div>
+        </div>
+        <div
+          class="bar--horizontal"
+          v-show="bars.horizontal.size"
+          :style="barSizeHorizontal"
+          :class="propBarHorizontal"
+          @touchstart="startDrag"
+          @mousedown="startDrag"
+          data-axis="X"
+          data-drag-source="bar"
+        >
+          <div
+            class="bar--horizontal-internal"
+            ref="horizontalBar"
+            :style="barInternalHorizontal"
+            :class="propBarInternalHorizontal"
+            @touchstart="startDrag"
+            @mousedown="startDrag"
+            data-axis="X"
+            data-drag-source="internal"
+          ></div>
+        </div>
+        <div class="bar--wrapper" ref="wrapperRef" :style="validationScrolls">
+          <slot></slot>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
