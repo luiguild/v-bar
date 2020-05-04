@@ -37,8 +37,8 @@
               </pre>
             </code>
             <h4>Using Simple CSS</h4>
-            <code
-              ><pre>
+            <code>
+              <pre>
               &lt;style&gt;
                   .wrapper {
                       height: 300px;
@@ -46,12 +46,12 @@
                   }
               &lt;/style&gt;
             </pre
-              ></code
-            >
+              >
+            </code>
             <h3>Include the component in your template</h3>
 
-            <code
-              ><pre>
+            <code>
+              <pre>
               &lt;template&gt;
                 &lt;v-bar wrapper="wrapper"
                     vBar=""
@@ -62,11 +62,11 @@
                 &lt;/v-bar&gt;
               &lt;/template&gt;
             </pre
-              ></code
-            >
+              >
+            </code>
             <h4>Import the component</h4>
-            <code
-              ><pre>
+            <code>
+              <pre>
               &lt;script&gt;
                 import VBar from 'v-bar'
                 export default {
@@ -74,52 +74,63 @@
                 }
               &lt;/script&gt;
             </pre
-              ></code
-            >
+              >
+            </code>
             <h3>Options</h3>
             <h4>
               VBar is fully customizable. You can use your CSS classes to make
               it even more beautiful :)
             </h4>
-            <code
-              ><pre>
+            <code>
+              <pre>
               <b>required</b> wrapper=""
               <b>optional</b> vBar=""
               <b>optional</b> vBarInternal=""
               <b>optional</b> hBar=""
               <b>optional</b> hBarInternal=""
             </pre
-              ></code
-            >
+              >
+            </code>
             <h3>
               To contribute <br />
               and make it better
             </h3>
-            <h4>Clone the repo,</h4>
-            <h4>change what you want and</h4>
-            <h4>send PR</h4>
+            <h4>Clone the repo, change what you want and, send PR</h4>
+
             <h2>Contributions are always welcome!</h2>
+
             <h3>Build Setup</h3>
             <h4>Install dependencies</h4>
-            <h4>Using NPM</h4>
+
+            <h5>Using NPM</h5>
             <code><pre>npm i</pre></code>
-            <h4>Using yarn</h4>
+
+            <h5>Using yarn</h5>
             <code><pre>yarn</pre></code>
+
             <h4>Serve with hot reload at localhost:8080</h4>
             <code><pre>npm run dev</pre></code>
+
             <h4>build for production with minification</h4>
             <code><pre>npm run build</pre></code>
+
             <h4>build for production and view the bundle analyzer report</h4>
             <code><pre>npm run build --report</pre></code>
+
             <h4>Contributors</h4>
+
             <h3>Luigui Delyer</h3>
             <h5>https://github.com/luiguild</h5>
+
             <h3>Carlo Fragni</h3>
             <h5>https://github.com/carlofragni</h5>
+
             <h3>SoullessWaffle</h3>
             <h5>https://github.com/SoullessWaffle</h5>
+
             <h3>Robbe Clerckx</h3>
             <h5>https://github.com/robbeman</h5>
+
             <h3>antshil</h3>
             <h5>https://github.com/antshil</h5>
           </div>
@@ -137,7 +148,7 @@
 </template>
 
 <script>
-import VBar from "./components/v-bar.vue";
+import VBar from './components/v-bar.vue';
 export default {
   data: () => ({}),
   components: { VBar }
@@ -145,14 +156,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "sass/bar.scss";
+@import 'sass/bar.scss';
 
 $vue-logo-height: 110vh;
 $vue-logo-width: 70vh;
 
 body,
 html {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;
@@ -171,7 +182,7 @@ html {
 
 body {
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -194,7 +205,7 @@ body {
   @include flex(column, n, center, center);
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -207,7 +218,7 @@ body {
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     margin-left: auto;
     margin-right: auto;
