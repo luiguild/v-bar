@@ -1,3 +1,149 @@
+<template>
+  <div class="component">
+    <v-bar
+      wrapper="wrapper"
+      vBar="verticalBarClass"
+      vBarInternal="verticalBarInternalClass"
+      hBar="horizontalBarClass"
+      hBarInternal="horizontalBarInternalClass"
+    >
+      <div class="container">
+        <div class="internal">
+          <h3 class="is-marginless">Welcome to</h3>
+          <h1 class="title is-marginless">VBar</h1>
+          <h4 class="is-marginless">
+            The virtual responsive crossbrowser scrollbar <br />
+            component for VueJS 2x
+          </h4>
+          <div class="steps">
+            <h2>Usage</h2>
+            <h3>Install</h3>
+            <h4>Using NPM</h4>
+            <code><pre>npm i v-bar</pre></code>
+            <h4>Using yarn</h4>
+            <code><pre>yarn add v-bar</pre></code>
+            <h3>
+              In your <code>.vue</code> component create a class to your wrapper
+            </h3>
+            <h4>Using SCSS</h4>
+            <code>
+              <pre>
+                &lt;style lang="scss"&gt;
+                .wrapper {
+                  height: 300px;
+                  width: 300px;
+                }
+                &lt;/style&gt;
+              </pre>
+            </code>
+            <h4>Using Simple CSS</h4>
+            <code
+              ><pre>
+              &lt;style&gt;
+                  .wrapper {
+                      height: 300px;
+                      width: 300px;
+                  }
+              &lt;/style&gt;
+            </pre
+              ></code
+            >
+            <h3>Include the component in your template</h3>
+
+            <code
+              ><pre>
+              &lt;template&gt;
+                &lt;v-bar wrapper="wrapper"
+                    vBar=""
+                    vBarInternal=""
+                    hBar=""
+                    hBarInternal=""&gt;
+                    ...
+                &lt;/v-bar&gt;
+              &lt;/template&gt;
+            </pre
+              ></code
+            >
+            <h4>Import the component</h4>
+            <code
+              ><pre>
+              &lt;script&gt;
+                import VBar from 'v-bar'
+                export default {
+                    components: { VBar }
+                }
+              &lt;/script&gt;
+            </pre
+              ></code
+            >
+            <h3>Options</h3>
+            <h4>
+              VBar is fully customizable. You can use your CSS classes to make
+              it even more beautiful :)
+            </h4>
+            <code
+              ><pre>
+              <b>required</b> wrapper=""
+              <b>optional</b> vBar=""
+              <b>optional</b> vBarInternal=""
+              <b>optional</b> hBar=""
+              <b>optional</b> hBarInternal=""
+            </pre
+              ></code
+            >
+            <h3>
+              To contribute <br />
+              and make it better
+            </h3>
+            <h4>Clone the repo,</h4>
+            <h4>change what you want and</h4>
+            <h4>send PR</h4>
+            <h2>Contributions are always welcome!</h2>
+            <h3>Build Setup</h3>
+            <h4>Install dependencies</h4>
+            <h4>Using NPM</h4>
+            <code><pre>npm i</pre></code>
+            <h4>Using yarn</h4>
+            <code><pre>yarn</pre></code>
+            <h4>Serve with hot reload at localhost:8080</h4>
+            <code><pre>npm run dev</pre></code>
+            <h4>build for production with minification</h4>
+            <code><pre>npm run build</pre></code>
+            <h4>build for production and view the bundle analyzer report</h4>
+            <code><pre>npm run build --report</pre></code>
+            <h4>Contributors</h4>
+            <h3>Luigui Delyer</h3>
+            <h5>https://github.com/luiguild</h5>
+            <h3>Carlo Fragni</h3>
+            <h5>https://github.com/carlofragni</h5>
+            <h3>SoullessWaffle</h3>
+            <h5>https://github.com/SoullessWaffle</h5>
+            <h3>Robbe Clerckx</h3>
+            <h5>https://github.com/robbeman</h5>
+            <h3>antshil</h3>
+            <h5>https://github.com/antshil</h5>
+          </div>
+        </div>
+      </div>
+    </v-bar>
+    <div class="icons-group">
+      <a class="icons" href="https://github.com/luiguild/v-bar" target="_blank"
+        ><i class="fa fa-github-alt"></i></a
+      ><a class="icons" href="https://twitter.com/luiguild" target="_blank"
+        ><i class="fa fa-twitter"></i
+      ></a>
+    </div>
+  </div>
+</template>
+
+<script>
+import VBar from "./components/v-bar.vue";
+export default {
+  data: () => ({}),
+  components: { VBar }
+};
+</script>
+
 <style lang="scss" scoped>
 @import "sass/bar.scss";
 
@@ -180,149 +326,3 @@ body {
   }
 }
 </style>
-
-<template>
-  <div class="component">
-    <v-bar
-      wrapper="wrapper"
-      vBar="verticalBarClass"
-      vBarInternal="verticalBarInternalClass"
-      hBar="horizontalBarClass"
-      hBarInternal="horizontalBarInternalClass"
-    >
-      <div class="container">
-        <div class="internal">
-          <h3 class="is-marginless">Welcome to</h3>
-          <h1 class="title is-marginless">VBar</h1>
-          <h4 class="is-marginless">
-            The virtual responsive crossbrowser scrollbar <br />
-            component for VueJS 2x
-          </h4>
-          <div class="steps">
-            <h2>Usage</h2>
-            <h3>Install</h3>
-            <h4>Using NPM</h4>
-            <code><pre>npm i v-bar</pre></code>
-            <h4>Using yarn</h4>
-            <code><pre>yarn add v-bar</pre></code>
-            <h3>
-              In your <code>.vue</code> component create a class to your wrapper
-            </h3>
-            <h4>Using SCSS</h4>
-            <code>
-              <pre>
-                &lt;style lang="scss"&gt;
-                .wrapper {
-                  height: 300px;
-                  width: 300px;
-                }
-                &lt;/style&gt;
-              </pre>
-            </code>
-            <h4>Using Simple CSS</h4>
-            <code
-              ><pre>
-              &lt;style&gt;
-                  .wrapper {
-                      height: 300px;
-                      width: 300px;
-                  }
-              &lt;/style&gt;
-            </pre
-              ></code
-            >
-            <h3>Include the component in your template</h3>
-
-            <code
-              ><pre>
-              &lt;template&gt;
-                &lt;v-bar wrapper="wrapper"
-                    vBar=""
-                    vBarInternal=""
-                    hBar=""
-                    hBarInternal=""&gt;
-                    ...
-                &lt;/v-bar&gt;
-              &lt;/template&gt;
-            </pre
-              ></code
-            >
-            <h4>Import the component</h4>
-            <code
-              ><pre>
-              &lt;script&gt;
-                import VBar from 'v-bar'
-                export default {
-                    components: { VBar }
-                }
-              &lt;/script&gt;
-            </pre
-              ></code
-            >
-            <h3>Options</h3>
-            <h4>
-              VBar is fully customizable. You can use your CSS classes to make
-              it even more beautiful :)
-            </h4>
-            <code
-              ><pre>
-              <b>required</b> wrapper=""
-              <b>optional</b> vBar=""
-              <b>optional</b> vBarInternal=""
-              <b>optional</b> hBar=""
-              <b>optional</b> hBarInternal=""
-            </pre
-              ></code
-            >
-            <h3>
-              To contribute <br />
-              and make it better
-            </h3>
-            <h4>Clone the repo,</h4>
-            <h4>change what you want and</h4>
-            <h4>send PR</h4>
-            <h2>Contributions are always welcome!</h2>
-            <h3>Build Setup</h3>
-            <h4>Install dependencies</h4>
-            <h4>Using NPM</h4>
-            <code><pre>npm i</pre></code>
-            <h4>Using yarn</h4>
-            <code><pre>yarn</pre></code>
-            <h4>Serve with hot reload at localhost:8080</h4>
-            <code><pre>npm run dev</pre></code>
-            <h4>build for production with minification</h4>
-            <code><pre>npm run build</pre></code>
-            <h4>build for production and view the bundle analyzer report</h4>
-            <code><pre>npm run build --report</pre></code>
-            <h4>Contributors</h4>
-            <h3>Luigui Delyer</h3>
-            <h5>https://github.com/luiguild</h5>
-            <h3>Carlo Fragni</h3>
-            <h5>https://github.com/carlofragni</h5>
-            <h3>SoullessWaffle</h3>
-            <h5>https://github.com/SoullessWaffle</h5>
-            <h3>Robbe Clerckx</h3>
-            <h5>https://github.com/robbeman</h5>
-            <h3>antshil</h3>
-            <h5>https://github.com/antshil</h5>
-          </div>
-        </div>
-      </div>
-    </v-bar>
-    <div class="icons-group">
-      <a class="icons" href="https://github.com/luiguild/v-bar" target="_blank"
-        ><i class="fa fa-github-alt"></i></a
-      ><a class="icons" href="https://twitter.com/luiguild" target="_blank"
-        ><i class="fa fa-twitter"></i
-      ></a>
-    </div>
-  </div>
-</template>
-
-<script>
-import VBar from "./components/v-bar.vue";
-export default {
-  data: () => ({}),
-  components: { VBar }
-};
-</script>
