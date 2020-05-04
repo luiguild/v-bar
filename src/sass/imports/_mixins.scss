@@ -1,0 +1,89 @@
+$pixel-proportion: 8px;
+
+@mixin border-box {
+  box-sizing: border-box;
+}
+
+@mixin flex($typeFlex, $wrapFlex, $justifyFlex, $alignFlex) {
+  display: flex !important;
+  flex-direction: $typeFlex !important;
+
+  @if $wrapFlex == wrap{
+    flex-wrap: wrap !important;
+  }
+  @else if $wrapFlex == w {
+    flex-wrap: wrap !important;
+  }
+  @else if $wrapFlex == nowrap {
+    flex-wrap: nowrap !important;
+  }
+  @else if $wrapFlex == n {
+    flex-wrap: nowrap !important;
+  }
+  @else if $wrapFlex == '' {
+    flex-wrap: nowrap !important;
+  }
+
+  justify-content: $justifyFlex !important;
+  align-content: $alignFlex !important;
+  align-items: $alignFlex !important;
+}
+.is-wrap{
+  flex-wrap: wrap !important;
+}
+
+.is-nowrap{
+  flex-wrap: nowrap !important;
+}
+
+@mixin transition($timeTransition) {
+  transition-timing-function: ease-in-out;
+  transition-duration: $timeTransition;
+  transition-property: all;
+}
+
+@mixin transition-delay($timeTransition) {
+  transition-delay: $timeTransition;
+}
+
+@mixin upper-case {
+  text-transform: uppercase;
+}
+
+@mixin lower-case {
+    text-transform: lowercase;
+}
+
+@mixin dont-select {
+  user-select: none;
+}
+
+@mixin cursor-pointer {
+  cursor: pointer;
+}
+
+@mixin cursor-default {
+  cursor: default;
+}
+
+@mixin display-block {
+  display: block;
+}
+
+@mixin display-none {
+  display: none;
+}
+
+@mixin animation($nameAnimation, $durationAnimation, $delayAnimation, $repeatAnimation, $directionAnimation, $stateAnimation) {
+  animation-name: $nameAnimation;
+  animation-duration: $durationAnimation;
+  animation-play-state: $stateAnimation;
+  animation-delay: $delayAnimation;
+  animation-iteration-count: $repeatAnimation;
+  animation-direction: $directionAnimation;
+}
+
+@mixin transparent {
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
