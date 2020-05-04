@@ -111,3 +111,6 @@ https://github.com/robbeman
 
 #### antshil
 https://github.com/antshil
+
+#### Henrique Deodato
+https://github.com/h3nr1ke
