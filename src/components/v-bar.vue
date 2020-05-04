@@ -69,32 +69,32 @@ export default {
     dragging: {
       enable: false,
       axis: '',
-      offset: '',
+      offset: ''
     },
     bars: {
       horizontal: {
         elm: '',
         parent: '',
-        size: 0,
+        size: 0
       },
       vertical: {
         elm: '',
         parent: '',
-        size: 0,
-      },
+        size: 0
+      }
     },
     wrapperObj: {
       elm: '',
       scrollHeight: '',
       scrollWidth: '',
       scrollLeft: '',
-      scrollTop: '',
+      scrollTop: ''
     },
     container: {
       elm: '',
       scrollHeight: '',
-      scrollWidth: '',
-    },
+      scrollWidth: ''
+    }
   }),
   mounted() {
     addResizeListener(this.$refs.container, this.resize);
@@ -135,14 +135,14 @@ export default {
     barSizeVertical() {
       if (this.bars.horizontal.size && this.bars.vertical.size) {
         return {
-          height: 'calc(100% - 16px)',
+          height: 'calc(100% - 16px)'
         };
       }
     },
     barSizeHorizontal() {
       if (this.bars.horizontal.size && this.bars.vertical.size) {
         return {
-          width: 'calc(100% - 16px)',
+          width: 'calc(100% - 16px)'
         };
       }
     },
@@ -151,7 +151,7 @@ export default {
 
       return {
         height: this.bars.vertical.size + 'px',
-        top: barTop + 'px',
+        top: barTop + 'px'
       };
     },
     barInternalHorizontal() {
@@ -159,7 +159,7 @@ export default {
 
       return {
         width: this.bars.horizontal.size + 'px',
-        left: barLeft + 'px',
+        left: barLeft + 'px'
       };
     },
     validationScrolls() {
@@ -169,7 +169,7 @@ export default {
       if (!this.bars.vertical.size) {
         return 'overflowY: hidden';
       }
-    },
+    }
   },
   methods: {
     scroll(e) {
@@ -292,7 +292,7 @@ export default {
       this.dragging = {
         enable: true,
         axis: axis,
-        offset: offset,
+        offset: offset
       };
     },
     onDrag(e) {
@@ -317,7 +317,7 @@ export default {
       if (this.dragging.enable) {
         this.dragging = {
           enable: false,
-          axis: '',
+          axis: ''
         };
       }
     },
@@ -334,13 +334,13 @@ export default {
         scrollHeight: wrapperRef.scrollHeight,
         scrollWidth: wrapperRef.scrollWidth,
         scrollLeft: wrapperRef.scrollLeft,
-        scrollTop: wrapperRef.scrollTop,
+        scrollTop: wrapperRef.scrollTop
       };
 
       this.container = {
         elm: containerRef,
         scrollHeight: containerRef.scrollHeight,
-        scrollWidth: containerRef.scrollWidth,
+        scrollWidth: containerRef.scrollWidth
       };
 
       this.bars.horizontal.elm = horizontalInternalBarRef;
@@ -362,9 +362,9 @@ export default {
           ? (this.container.scrollHeight / this.wrapperObj.scrollHeight) *
             this.container.scrollHeight
           : 0;
-    },
+    }
   },
-  props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal'],
+  props: ['wrapper', 'vBar', 'vBarInternal', 'hBar', 'hBarInternal']
 };
 </script>
 
