@@ -1,6 +1,6 @@
 {
     "name": "v-bar",
-    "version": "3.0.0",
+    "version": "0.0.2,
     "description": "The virtual responsive crossbrowser scrollbar component for VueJS 2x",
     "author": "Luigui Delyer",
     "main": "src/components/v-bar.vue",
