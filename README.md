@@ -37,18 +37,6 @@ yarn add v-bar
 ```
 
 #### Include the component in your template
-###### Using Pug
-``` pug
-<template lang="pug">
-    v-bar(wrapper="wrapper",
-        vBar="",
-        vBarInternal="",
-        hBar="",
-        hBarInternal="")
-        //- your content
-</template>
-```
-
 ###### Using Simple HTML
 ``` vue
 <template>
@@ -123,3 +111,6 @@ https://github.com/robbeman
 
 #### antshil
 https://github.com/antshil
+
+#### Henrique Deodato
+https://github.com/h3nr1ke

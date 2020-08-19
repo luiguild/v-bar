@@ -3,7 +3,7 @@
 // GITHUB = https://github.com/luiguild/v-bar.git                                           //
 // **************************************************************************************** //
 
-import Vue from 'vue'
-import App from './App'
+import Vue from 'vue';
+import App from './App';
 
-new Vue(Vue.util.extend(App)).$mount('#app')
+new Vue(Vue.util.extend(App)).$mount('#app');
